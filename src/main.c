@@ -1,14 +1,27 @@
-
-struct Neuron
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct
 {
-  int input1;
-  int input2;
-  int input3;
-  
-  int out;
-};
+  double weight;
+  double bias;
+} Neuron;
+
+typedef struct
+{
+  Neuron *neurons;
+  int neuronCount;
+} Layer;
+
+typedef struct
+{
+  Layer input;
+  Layer hidden;
+  Layer output;
+} Network;
+
 
 int main()
 {
+  Neuron n1;
   return 0;
 }
