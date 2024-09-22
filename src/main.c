@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <math.h>
 
+double inputs[4][2] = {{0, 0}, {1, 0}, {0, 1}, {1, 1}};
+double expectedOutput[4] = {0, 1, 1, 0};
+
 typedef struct
 {
   double weight;
@@ -42,18 +45,19 @@ void populateLayer(Layer *l)
 double dotProduct(double i1, double w1, double i2, double w2)
 {
   double res = ((i1 * w1) + (i2 * w2));
-  //printf("DOT PRODUCT RES: %f\n", res);
+  // printf("DOT PRODUCT RES: %f\n", res);
   return res;
 }
 
 double sigmoid(double z)
 {
   double res = 1 / (1 + exp(-z));
- // printf("SIGMOID RES: %d\n", res);
+  // printf("SIGMOID RES: %d\n", res);
   return res;
 }
 
-double error(){
+double error()
+{
   double target;
   double output;
 
@@ -61,7 +65,7 @@ double error(){
   res = 0.5 * pow((target - output), 2);
 }
 
-void forwardPass()
+void feedForward()
 {
   for (int i = 0; i < 2; i++)
   {
@@ -79,9 +83,6 @@ int main()
   populateLayer(&neuralNetwork.hidden);
   populateLayer(&neuralNetwork.output);
 
-  
-
-
-
+  printf("INPUT 1: %f, %f\n", inputs[1][0], inputs[1][1]);
   return 0;
 }
