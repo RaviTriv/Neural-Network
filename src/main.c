@@ -42,15 +42,23 @@ void populateLayer(Layer *l)
 double dotProduct(double i1, double w1, double i2, double w2)
 {
   double res = ((i1 * w1) + (i2 * w2));
-  printf("DOT PRODUCT RES: %f\n", res);
+  //printf("DOT PRODUCT RES: %f\n", res);
   return res;
 }
 
 double sigmoid(double z)
 {
   double res = 1 / (1 + exp(-z));
-  printf("SIGMOID RES: %d\n", res);
+ // printf("SIGMOID RES: %d\n", res);
   return res;
+}
+
+double error(){
+  double target;
+  double output;
+
+  double res;
+  res = 0.5 * pow((target - output), 2);
 }
 
 void forwardPass()
@@ -71,6 +79,9 @@ int main()
   populateLayer(&neuralNetwork.hidden);
   populateLayer(&neuralNetwork.output);
 
-  dotProduct(0.05, 0.15, 0.1, 0.2);
+  
+
+
+
   return 0;
 }
