@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+
 typedef struct
 {
   double weight;
@@ -19,7 +21,7 @@ typedef struct
   Layer output;
 } Network;
 
-Layer create(neuronCount)
+Layer create(int neuronCount)
 {
   Layer l;
   l.neurons = malloc(neuronCount * sizeof(Neuron));
@@ -37,8 +39,38 @@ void populateLayer(Layer *l)
   }
 }
 
+double dotProduct(double i1, double w1, double i2, double w2)
+{
+  double res = ((i1 * w1) + (i2 * w2));
+  printf("DOT PRODUCT RES: %f\n", res);
+  return res;
+}
+
+double sigmoid(double z)
+{
+  double res = 1 / (1 + exp(-z));
+  printf("SIGMOID RES: %d\n", res);
+  return res;
+}
+
+void forwardPass()
+{
+  for (int i = 0; i < 2; i++)
+  {
+  }
+}
+
 int main()
 {
-  Neuron n1;
+  Network neuralNetwork;
+  neuralNetwork.input = create(2);
+  neuralNetwork.hidden = create(2);
+  neuralNetwork.output = create(1);
+
+  populateLayer(&neuralNetwork.input);
+  populateLayer(&neuralNetwork.hidden);
+  populateLayer(&neuralNetwork.output);
+
+  dotProduct(0.05, 0.15, 0.1, 0.2);
   return 0;
 }
