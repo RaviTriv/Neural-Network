@@ -7,7 +7,8 @@ double expectedOutput[4] = {0, 1, 1, 0};
 
 typedef struct
 {
-  double weight;
+  double inputs[2];
+  double weights[2];
   double bias;
 } Neuron;
 
@@ -37,7 +38,8 @@ void populateLayer(Layer *l)
   for (int i = 0; i < l->neuronCount; i++)
   {
     // setting to random at start so values are not same for gradient
-    l->neurons[i].weight = ((double)rand() / (double)RAND_MAX);
+    l->neurons[i].weights[0] = ((double)rand() / (double)RAND_MAX);
+    l->neurons[i].weights[1] = ((double)rand() / (double)RAND_MAX);
     l->neurons[i].bias = 0;
   }
 }
@@ -65,10 +67,23 @@ double error()
   res = 0.5 * pow((target - output), 2);
 }
 
-void feedForward()
+double feedForward(Neuron *n)
+{
+  double res;
+
+  for (int i = 0; i < 2; i++)
+  {
+    res += n->weights[i] * n->inputs[i];
+  }
+
+  return sigmoid(res);
+}
+
+void backwards(Neuron *neuron, double error)
 {
   for (int i = 0; i < 2; i++)
   {
+    neuron->weights[i] = error * neuron->inputs[i];
   }
 }
 
@@ -84,5 +99,10 @@ int main()
   populateLayer(&neuralNetwork.output);
 
   printf("INPUT 1: %f, %f\n", inputs[1][0], inputs[1][1]);
+  int randomIndex = rand() % 3;
+  for (int i = 0; i < 2; i++)
+  {
+    Neuron *n = &neuralNetwork.input;
+  }
   return 0;
 }
