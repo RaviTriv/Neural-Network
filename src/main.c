@@ -75,16 +75,16 @@ int main()
   for (int e = 0; e < 10000; e++)
   {
     int randomIndex = (rand() % 4);
-    double tempTraing[2];
-    tempTraing[0] = inputs[randomIndex][0];
-    tempTraing[1] = inputs[randomIndex][1];
-    printf("EXPECTED %d XOR %d ", (int)tempTraing[0], (int)tempTraing[1]);
+    double tempTraining[2];
+    tempTraining[0] = inputs[randomIndex][0];
+    tempTraining[1] = inputs[randomIndex][1];
+    printf("EXPECTED %d XOR %d ", (int)tempTraining[0], (int)tempTraining[1]);
 
     for (int i = 0; i < 2; i++)
     {
       Neuron *n = &hiddenLayer[i];
-      n->inputs[0] = tempTraing[0];
-      n->inputs[1] = tempTraing[1];
+      n->inputs[0] = tempTraining[0];
+      n->inputs[1] = tempTraining[1];
       outputLayer.inputs[i] = feedForward(n);
     }
 
@@ -99,7 +99,7 @@ int main()
       backwards(&hiddenLayer[k], err2);
     }
 
-    printf("= %d GOT %d XOR %d = %d OUTPUT: %f ERROR: %f\n", (int)expectedOutput[randomIndex], (int)tempTraing[0], (int)tempTraing[1], out > 0.5, out, err);
+    printf("= %d GOT %d XOR %d = %d OUTPUT: %f ERROR: %f\n", (int)expectedOutput[randomIndex], (int)tempTraining[0], (int)tempTraining[1], out > 0.5, out, err);
   }
 
   printf("END\n");
