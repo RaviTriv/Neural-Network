@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-double inputs[4][2] = {{0, 0}, {1, 0}, {0, 1}, {1, 1}};
+double inputs[4][2] = {{0, 0}, {0, 1}, {1, 0}, {1, 1}};
 double expectedOutput[4] = {0, 1, 1, 0};
 
 typedef struct
@@ -12,70 +12,42 @@ typedef struct
   double bias;
 } Neuron;
 
-typedef struct
+void populateLayer(Neuron *neuron)
 {
-  Neuron *neurons;
-  int neuronCount;
-} Layer;
-
-typedef struct
-{
-  Layer input;
-  Layer hidden;
-  Layer output;
-} Network;
-
-Layer create(int neuronCount)
-{
-  Layer l;
-  l.neurons = malloc(neuronCount * sizeof(Neuron));
-  l.neuronCount = neuronCount;
-  return l;
-}
-
-void populateLayer(Layer *l)
-{
-  for (int i = 0; i < l->neuronCount; i++)
+  for (int i = 0; i < 2; i++)
   {
-    // setting to random at start so values are not same for gradient
-    l->neurons[i].weights[0] = ((double)rand() / (double)RAND_MAX);
-    l->neurons[i].weights[1] = ((double)rand() / (double)RAND_MAX);
-    l->neurons[i].bias = 0;
+    neuron->weights[i] = ((double)rand() / (double)RAND_MAX);
   }
+  neuron->bias = ((double)rand() / (double)RAND_MAX);
 }
 
 double dotProduct(double i1, double w1, double i2, double w2)
 {
   double res = ((i1 * w1) + (i2 * w2));
-  // printf("DOT PRODUCT RES: %f\n", res);
   return res;
 }
 
 double sigmoid(double z)
 {
   double res = 1 / (1 + exp(-z));
-  // printf("SIGMOID RES: %d\n", res);
   return res;
 }
 
-double error()
+double sigmoidDerivative(double x)
 {
-  double target;
-  double output;
-
-  double res;
-  res = 0.5 * pow((target - output), 2);
+  return (x * (1. - x));
 }
 
-double feedForward(Neuron *n)
+double error(double target, double output)
 {
-  double res;
+  return target - output;
+}
 
-  for (int i = 0; i < 2; i++)
-  {
-    res += n->weights[i] * n->inputs[i];
-  }
-
+double feedForward(Neuron *neuron)
+{
+  double res = 0;
+  res += dotProduct(neuron->inputs[0], neuron->weights[0], neuron->inputs[1], neuron->weights[1]);
+  res += neuron->bias;
   return sigmoid(res);
 }
 
@@ -83,26 +55,54 @@ void backwards(Neuron *neuron, double error)
 {
   for (int i = 0; i < 2; i++)
   {
-    neuron->weights[i] = error * neuron->inputs[i];
+    neuron->weights[i] += error * neuron->inputs[i];
   }
+  neuron->bias += error;
 }
 
 int main()
 {
-  Network neuralNetwork;
-  neuralNetwork.input = create(2);
-  neuralNetwork.hidden = create(2);
-  neuralNetwork.output = create(1);
+  printf("START\n");
+  Neuron hiddenLayer[2];
+  Neuron outputLayer;
 
-  populateLayer(&neuralNetwork.input);
-  populateLayer(&neuralNetwork.hidden);
-  populateLayer(&neuralNetwork.output);
-
-  printf("INPUT 1: %f, %f\n", inputs[1][0], inputs[1][1]);
-  int randomIndex = rand() % 3;
   for (int i = 0; i < 2; i++)
   {
-    Neuron *n = &neuralNetwork.input;
+    populateLayer(&hiddenLayer[i]);
   }
+
+  populateLayer(&outputLayer);
+  for (int e = 0; e < 10000; e++)
+  {
+    int randomIndex = (rand() % 4);
+    double tempTraing[2];
+    tempTraing[0] = inputs[randomIndex][0];
+    tempTraing[1] = inputs[randomIndex][1];
+    printf("EXPECTED %d XOR %d ", (int)tempTraing[0], (int)tempTraing[1]);
+
+    for (int i = 0; i < 2; i++)
+    {
+      Neuron *n = &hiddenLayer[i];
+      n->inputs[0] = tempTraing[0];
+      n->inputs[1] = tempTraing[1];
+      outputLayer.inputs[i] = feedForward(n);
+    }
+
+    double out = feedForward(&outputLayer);
+    double err = sigmoidDerivative(out) * (error(expectedOutput[randomIndex], out));
+
+    backwards(&outputLayer, err);
+
+    for (int k = 0; k < 2; k++)
+    {
+      double err2 = sigmoidDerivative(outputLayer.inputs[k]) * err * outputLayer.weights[k];
+      backwards(&hiddenLayer[k], err2);
+    }
+
+    printf("= %d GOT %d XOR %d = %d OUTPUT: %f ERROR: %f\n", (int)expectedOutput[randomIndex], (int)tempTraing[0], (int)tempTraing[1], out > 0.5, out, err);
+  }
+
+  printf("END\n");
+
   return 0;
 }
