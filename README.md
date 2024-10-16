@@ -6,12 +6,12 @@ Neural Networks are a common architecture used for non-linear machine learning p
 
 Often we come across data that cannot be linearly seperated. A good example of this is XOR.
 
-![XOR inputs plotted](/images/xorPlot.png.png)
+![XOR inputs plotted](/images/xorPlot.png)
 We see different input points for our problem plotted. 
 
-![Not Linearly seperatable 1](/images/notL1.png.png.png)
+![Not Linearly seperatable 1](/images/notL1.png)
 
-![Not Linearly seperatable 2](/images/notL2.png.png.png)
+![Not Linearly seperatable 2](/images/notL2.png)
 
 It is evident that a straight line cannot be drawn to seperate `(1,0),(0,1)` on one side and `(0,0),(1,1)` on another.
 
