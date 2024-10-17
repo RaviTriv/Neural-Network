@@ -27,6 +27,7 @@ It is evident that a straight line cannot be drawn to seperate `(1,0),(0,1)` on 
 Using linear regression for this type of problem won't cut it. Instead, we can utilize a neural network to model complex relationships.
  
 ## How does this work?
+
 With the use of `activation functions` we can introduce `non-linearity` into our neural networ to do this.
 
 ### Initialization
