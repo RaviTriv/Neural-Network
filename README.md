@@ -1,10 +1,19 @@
 # Neural-Network
 
 ## What are neural networks?
-Neural Networks are a common architecture used for non-linear machine learning problems.
+Neural Networks are a common architecture used for non-linear machine learning problems. In the real world a lot of the data we encounter is complex and non-linear, this is where Neural Networks shine.
 
+## Example
 
-Often we come across data that cannot be linearly seperated. A good example of this is XOR.
+A simple example of this is the XOR gate problem. Below the table lists the inputs and outputs for the XOR gate.
+
+| Input 1 | Input 2 | Output |
+| ------- | ------- | ------ |
+| 0       | 0       | 0      |
+| 1       | 0       | 1      |
+| 1       | 1       | 0      |
+| 0       | 1       | 1      |
+
 
 ![XOR inputs plotted](/images/xorPlot.png)
 We see different input points for our problem plotted. 
@@ -15,7 +24,10 @@ We see different input points for our problem plotted.
 
 It is evident that a straight line cannot be drawn to seperate `(1,0),(0,1)` on one side and `(0,0),(1,1)` on another.
 
+Using linear regression for this type of problem won't cut it. Instead, we can utilize a neural network to model complex relationships.
+ 
 ## How does this work?
+With the use of `activation functions` we can introduce `non-linearity` into our neural networ to do this.
 
 ### Initialization
 We begin by initializing neuron weights to a random value. This is important for gradient descent (more about this later). This process is often referred to as breaking the symmetry.
