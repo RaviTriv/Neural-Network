@@ -25,18 +25,15 @@ We see different input points for our problem plotted.
 It is evident that a straight line cannot be drawn to seperate `(1,0),(0,1)` on one side and `(0,0),(1,1)` on another.
 
 Using linear regression for this type of problem won't cut it. Instead, we can utilize a neural network to model complex relationships.
- 
-## How does this work?
 
-With the use of `activation functions` we can introduce `non-linearity` into our neural networ to do this.
+With the use of `activation functions` we can introduce `non-linearity` into our neural network to do this.
 
 ### Initialization
-We begin by initializing neuron weights to a random value. This is important for gradient descent (more about this later). This process is often referred to as breaking the symmetry.
+Our Neural Network is made up of units referred to as Neurons. Each neuron has a `weight`, this is a value to repersent how much of a say the neuron has in the network. A larger value indicates the neuron has more of a say while a lower value indicates the opposite. At initilization we want these `weights` to be a random value. This is important for gradient descent (more about this later). The process of doing this is often referred to as breaking the symmetry.
 
 ### Forward Pass
-After this we pass our training data to our neurons.
-//INSERT FUNCTION HERE
-We then multiply our inputs by our weights and add them together. We then pass the resulting value to our activation function.
+After this we pass our training data to our neurons. We then multiply our inputs by our weights and add them together and add the bias. We then pass the resulting value to our activation function. In this case we are using the `sigmoid` function as our activation function.
+$\sigma ({i_1} * {w_1} + {i_2} * {w_2} + b)$ <br />
 
 **What is an activation function?**
 An activation function allows us to introduce `non-linearity` to our neural network. This is important because complex data problems are commonly `non-linear`.
@@ -81,5 +78,3 @@ ErrorTotal = Error1 + Error2
 | 1       | 0       | 1      |
 | 1       | 1       | 0      |
 | 0       | 1       | 1      |
-
-
