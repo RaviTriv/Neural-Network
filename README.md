@@ -41,9 +41,11 @@ An activation function allows us to introduce `non-linearity` into our network. 
 INSERT PIC HERE
 
 As indicated in the photo we need a qudaratic function to repersent this relation, we can achieve this by applying an activation function. We are using the sigmoid function,
-which can be repersented as the following, <br /> $\sigma (x) = {1 \over {1 + {e^{-x}}}}$
+which can be represented as the following, <br /> $\sigma (x) = {1 \over {1 + {e^{-x}}}}$
 
-The sigmoid function is whats known as a squashing function. Essentially that means it takes any real number and returns a value between 0 and 1.
+`Sigmoid` makes for a good activation function due to the following reasons.
+  - The output is always between 0 and 1. As we approach $-\inft$ our function approaches 0 and as we approach $+\inft$ out function aproaches 1.
+  - The function is differentiable, which is important for gradient descent.
 
 ### Calculating error
 We want to calculate error to get an idea of how our neural network is performing. We can use this value to adjust our weights and bias to get better results from our model.
