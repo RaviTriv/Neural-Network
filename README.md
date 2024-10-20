@@ -44,11 +44,12 @@ As indicated in the photo we need a qudaratic function to repersent this relatio
 which can be represented as the following, <br /> $\sigma (x) = {1 \over {1 + {e^{-x}}}}$
 
 `Sigmoid` makes for a good activation function due to the following reasons.
-  - The output is always between 0 and 1. As we approach $-\inft$ our function approaches 0 and as we approach $+\inft$ out function aproaches 1.
+  - The output is always between 0 and 1. As we approach $-\infty$ our function approaches 0 and as we approach $+\infty$ out function aproaches 1.
   - The function is differentiable, which is important for gradient descent.
 
 ### Calculating error
-We want to calculate error to get an idea of how our neural network is performing. We can use this value to adjust our weights and bias to get better results from our model.
+Calculate error is an important part of training neural networks, we want to get an idea of how our network is performing. Based on this we can adjust our weights and bias to get better results from our model.
+To caculate our error we use the following formula, $\sigma′(expected - output)$
 
 ### Gradient Descent
 We essentially use Gradient Descent to find a minimum. In many cases we can have many local miniums, thats why its important to have random starting points as we can increase our chances of finding the best min.
