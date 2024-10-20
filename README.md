@@ -31,16 +31,18 @@ With the use of `activation functions` we can introduce `non-linearity` into our
 ### Initialization
 Our Neural Network is made up of units referred to as Neurons. Each neuron has a `weight`, this is a value to repersent how much of a say the neuron has in the network. A larger value indicates the neuron has more of a say while a lower value indicates the opposite. At initilization we want these `weights` to be a random value. This is important for gradient descent (more about this later). The process of doing this is often referred to as breaking the symmetry.
 
-### Forward Pass
+### Forward Progpogation
 After this we pass our training data to our neurons. We then multiply our inputs by our weights and add them together and add the bias. We then pass the resulting value to our activation function. In this case we are using the `sigmoid` function as our activation function.
 $\sigma ({i_1} * {w_1} + {i_2} * {w_2} + b)$ <br />
 
 **What is an activation function?**
-An activation function allows us to introduce `non-linearity` to our neural network. This is important because complex data problems are commonly `non-linear`.
-An activation function simply determines if a neuron should be activated or not. In this case the `sigmoid` function is our activation function. We simply check if our output value from the `sigmoid` function is greater `0.5` or not to determine whether a node is activated or not.
+An activation function allows us to introduce `non-linearity` into our network. The sumation of linear function will result in another linear function, regardless of the number of layers, we would still end up with a linear function. 
 
-**What is a sigmoid function and why is it important?**
-INSERT SIGMOID FUNCTION FORMULA HERE
+INSERT PIC HERE
+
+As indicated in the photo we need a qudaratic function to repersent this relation, we can achieve this by applying an activation function. We are using the sigmoid function,
+which can be repersented as the following, <br /> $\sigma (x) = {1 \over {1 + {e^{-x}}}}$
+
 The sigmoid function is whats known as a squashing function. Essentially that means it takes any real number and returns a value between 0 and 1.
 
 ### Calculating error
