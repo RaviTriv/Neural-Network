@@ -48,9 +48,9 @@ which can be represented as the following, <br /> $\sigma (x) = {1 \over {1 + {e
   - The function is differentiable, which is important for gradient descent.
 
 ### Calculating error
-Calculate error is an important part of training neural networks, we want to get an idea of how our network is performing. Based on this we can adjust our weights and bias to get better results from our model.
-To caculate our error we use the following formula, <br /> $\sigma′(output) * (expected - output)$ <br />
-We are multiplying the slope by output, the reasoning behind this is we want to adjust predictions which are stuck around the middle. Predicitions that are near 0 or 1 are high confidence predictions, multiplying by the slope will essentially mean multiplying by 0 as the slope there is near 0. We want to increase the error for predicitions near the middle, as some sort of slope exists near the middle the error will be multiplied and turn into a larger number.
+This is an important part of training neural networks, we want to get an idea of how our network is performing. Based on this we can adjust our weights and bias to get better results from our model.
+To caculate our error we use the following formula: <br /> $\sigma′(output) * (expected - output)$ <br />
+We are multiplying the slope by output, the reasoning behind this is we want to adjust predictions which are stuck around the middle. Predicitions that are near 0 or 1 can be considered high confidence predictions, multiplying by the slope will essentially mean multiplying by 0 as the slope there is near 0. We want to increase the error for predicitions near the middle, as some sort of slope exists near the middle the error will be multiplied and turn into a larger number.
 
 ### Gradient Descent
 We essentially use Gradient Descent to find a minimum. In many cases we can have many local miniums, thats why its important to have random starting points as we can increase our chances of finding the best min.
