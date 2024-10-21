@@ -24,11 +24,11 @@ We see different input points for our problem plotted.
 
 It is evident that a straight line cannot be drawn to seperate `(1,0),(0,1)` on one side and `(0,0),(1,1)` on another. This is a good problem for a Neural Network.
 
-### Initialization
+## Initialization
 
 Our Neural Network is made up of units referred to as Neurons. Each neuron has a `weight`, this is a value to represent how much of a say the neuron has in the network. A larger value indicates the neuron has more of a say while a lower value indicates the opposite. At initilization we want these `weights` to be a random value.
 
-### Forward Progpogation
+## Forward Progpogation
 
 Training data is passed to our neurons. The dot product of the inputs and weights are summed together with the bias. The resulting value is passed to the activation function. In this case we are using the `sigmoid` function as our activation function.
 $\sigma ({i_1} * {w_1} + {i_2} * {w_2} + b)$ <br />
