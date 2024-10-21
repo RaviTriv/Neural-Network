@@ -33,7 +33,7 @@ Our Neural Network is made up of units referred to as Neurons. Each neuron has a
 Training data is passed to our neurons. The dot product of the inputs and weights are summed together with the bias. The resulting value is passed to the activation function. In this case we are using the `sigmoid` function as our activation function.
 $\sigma ({i_1} * {w_1} + {i_2} * {w_2} + b)$ <br />
 
-**What is an activation function?**
+**What is an activation function?** <br />
 An activation function allows us to introduce `non-linearity` into our network. The sumation of linear function will result in another linear function, regardless of the number of layers, we would still end up with a linear function.
 
 ![Boundary](/images/boundary.png)
