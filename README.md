@@ -42,19 +42,17 @@ As indicated in the photo we need a qudaratic function to repersent this relatio
 which can be represented as the following, $\sigma (x) = {1 \over {1 + {e^{-x}}}}$
 
 A few reaons `Sigmoid` makes for a good activation function:
+
 - The output is always between 0 and 1. As we approach $-\infty$ our function approaches 0 and as we approach $+\infty$ out function aproaches 1.
 - The function is differentiable, which is important for gradient descent.
 
 ### Calculating error
 
 We want to get an idea of how our network is performing, based on this we can adjust our weights and bias to get better results from our model. To caculate our error we use the following formula: $\sigma′(output) * (expected - output)$ <br />.
-We are multiplying the slope by output, the reasoning behind this is we want to adjust predictions which are around the middle. Predicitions that are near 0 or 1 can be considered high confidence predictions, multiplying by the slope will essentially mean multiplying by 0 as theres not much slope near the top or bottom. We want to increase the error for predicitions near the middle. 
-
-As seen in our $sigmoid$ function some sort of slope exists near the middle. The error will be multiplied and turn into a larger number.
+We are multiplying the slope by output, the reasoning behind this is we want to adjust predictions which are around the middle. Predicitions that are near 0 or 1 can be considered high confidence predictions, multiplying by the slope will essentially mean multiplying by 0 as theres not much slope near the top or bottom. We want to increase the error for predicitions near the middle.
+![Sigmoid](/images/sigmoid.png)
+As seen in our $sigmoid$ function some sort of slope exists near the middle. The error will be multiplied to result in a larger number.
 
 ### Backward Propogation
 
 To train our network we want to go backwards and update the value of our weights and bias. Gradient Descent is used to find the lowest error value. We iteratively update our weights and bias to inch closer and closer to our minimum error value.
-
-
-
